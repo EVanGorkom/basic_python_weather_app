@@ -1,6 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
+import pdb
 
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
@@ -13,7 +14,7 @@ if response.status_code == 200:
   data = response.json()
   weather = data['weather'][0]['description']
   print("Weather:", weather.title())
-  temp = round(data['main']['temp'] - 255.37)
-  print(f'Temperature: {temp}F Degrees')
+  temp = round(data['main']['temp'] - 273.15)
+  print(f'Temperature: {temp}C Degrees')
 else:
   print("An error occurred.")
